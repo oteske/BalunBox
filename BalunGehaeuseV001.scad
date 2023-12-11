@@ -243,6 +243,18 @@ module UGehause()
 			rotate([90, 0, 0])
 			cylinder(d=BefDurchm, h=(UDurchmesserAussen/2)+BuAnTiefe+1, center=false);
 		}
+		
+		if(FlanschTyp=="Hyperflex 5")
+		{
+			MitteDurchm=5;
+			BefAbst=18.3;
+			
+			// Mittel-Durchbruch.
+			// translate([IBreite/2, ITiefe+1, IHoehe/2])
+			translate([0, 0, UHoehe/2])
+			rotate([90, 0, 0])
+			cylinder(d=MitteDurchm, h=ITiefe+2, center=false);
+		}
 	}
 }
 
