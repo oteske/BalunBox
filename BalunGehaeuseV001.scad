@@ -51,7 +51,7 @@ DeRand=1.5;
 DeSnapDurch=1;
 
 // slider widget for number in range
-DeScaleXY=0.98; // [0.9:0.01:1.1]
+DeScaleXY=0.99; // [0.98:0.01:1.02]
 
 /* [Abgriffe] */
 // Bohrung-Durchmesser:
@@ -71,13 +71,13 @@ AbgDeltaDeg=15;
 FlanschTyp="UG 58 TG"; // ["UG 58 TG","Hyperflex 5"]
 
 /* [Deckel Beschriftung] */
-// Zeile 1: Text:
+// Zeile 1: Text:--------------------------
 Text01="Strom-";
 
 // Zeile 1: Größe:
 Text01Size=8;
 
-// Zeile 2: Text:
+// Zeile 2: Text:--------------------------
 Text02="Balun";
 
 // Zeile 2: Größe:
@@ -86,11 +86,11 @@ Text02Size=8;
 // Zeile 2: Abstand zu Zeile 1:
 Text02Space=3;
 
-// Zeile 3: Text:
+// Zeile 3: Text:--------------------------
 Text03="V0.0";
 
 // Zeile 3: Größe:
-Text03Size=6;
+Text03Size=8;
 
 // Zeile 3: Abstand zu Zeile 2:
 Text03Space=3;
@@ -99,7 +99,7 @@ Text03Space=3;
 Text04="DB5ZF";
 
 // Zeile 4: Größe:
-Text04Size=6;
+Text04Size=8;
 
 // Zeile 4: Abstand zu Zeile 3:
 Text04Space=3;
@@ -117,7 +117,7 @@ Text05Space=3;
 Text06="FT-114-43 &";
 
 // Zeile 6: Größe:
-Text06Size=4;
+Text06Size=6;
 
 // Zeile 6: Abstand zu Zeile 5:
 Text06Space=3;
@@ -126,7 +126,7 @@ Text06Space=3;
 Text07="FT-114-77";
 
 // Zeile 7: Größe:
-Text07Size=4;
+Text07Size=6;
 
 // Zeile 7: Abstand zu Zeile 6:
 Text07Space=3;
@@ -135,7 +135,7 @@ Text07Space=3;
 Text08="in Reihe.";
 
 // Zeile 8: Größe:
-Text08Size=4;
+Text08Size=6;
 
 // Zeile 8: Abstand zu Zeile 7:
 Text08Space=3;
