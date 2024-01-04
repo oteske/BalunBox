@@ -297,12 +297,13 @@ module UDeckel()
 		circle(r=(DeSnapDurch/2), $fn=100);
 		
 		// Snapin Rand, Anschlußbox, links.
-		translate([((BuAnBreite/2)-UDicke+DeRand)*-1, ((UDurchmesserAussen/2)+BuAnTiefe-DeRand)*-1, DeDicke+DeEiTiefe-(DeSnapDurch/2)])
+		//translate([((BuAnBreite/2)-UDicke+DeRand)*-1, ((UDurchmesserAussen/2)+BuAnTiefe-DeRand)*-1, DeDicke+DeEiTiefe-(DeSnapDurch/2)])
+		translate([((BuAnBreite/2)-DeRand)*-1, ((UDurchmesserAussen/2)+BuAnTiefe-DeRand)*-1, DeDicke+DeEiTiefe-(DeSnapDurch/2)])
 		rotate([-90, 0, 0])
 		cylinder(d=DeSnapDurch, h=BuAnTiefe+(UDurchmesserAussen/2), center=false);
 		
 		// Snapin Rand, Anschlußbox, rechts.
-		translate([((BuAnBreite/2)-UDicke+DeRand)*1, ((UDurchmesserAussen/2)+BuAnTiefe-DeRand)*-1, DeDicke+DeEiTiefe-(DeSnapDurch/2)])
+		translate([((BuAnBreite/2)-DeRand)*1, ((UDurchmesserAussen/2)+BuAnTiefe-DeRand)*-1, DeDicke+DeEiTiefe-(DeSnapDurch/2)])
 		rotate([-90, 0, 0])
 		cylinder(d=DeSnapDurch, h=BuAnTiefe+(UDurchmesserAussen/2), center=false);
 		
