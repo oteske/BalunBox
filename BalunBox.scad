@@ -74,13 +74,19 @@ FlanschTypN="UG 58 TG"; // ["UG 58 TG","Hyperflex 5"]
 FlanschTypS="UG 58 TG"; // ["UG 58 TG","Hyperflex 5"]
 
 /* [Deckel Beschriftung] */
-// Zeile 1: Text:--------------------------
+// Zeile 1: Text:
 Text01="Strom-";
 
 // Zeile 1: Größe:
 Text01Size=8;
 
-// Zeile 2: Text:--------------------------
+// Zeile 2: Abstand zum oberen Rand:
+Text01Space=5;
+
+// Zeile 1: Linker Rand:
+Text01LSpace=33;
+
+// Zeile 2: Text:
 Text02="Balun";
 
 // Zeile 2: Größe:
@@ -89,7 +95,10 @@ Text02Size=8;
 // Zeile 2: Abstand zu Zeile 1:
 Text02Space=3;
 
-// Zeile 3: Text:--------------------------
+// Zeile 2: Linker Rand:
+Text02LSpace=20;
+
+// Zeile 3: Text:
 Text03="V0.0";
 
 // Zeile 3: Größe:
@@ -97,6 +106,9 @@ Text03Size=8;
 
 // Zeile 3: Abstand zu Zeile 2:
 Text03Space=3;
+
+// Zeile 3: Linker Rand:
+Text03LSpace=10;
 
 // Zeile 4: Text:
 Text04="DB5ZF";
@@ -107,6 +119,9 @@ Text04Size=8;
 // Zeile 4: Abstand zu Zeile 3:
 Text04Space=3;
 
+// Zeile 4: Linker Rand:
+Text04LSpace=5;
+
 // Zeile 5: Text:
 Text05="05.12.2023";
 
@@ -115,6 +130,9 @@ Text05Size=6;
 
 // Zeile 5: Abstand zu Zeile 4:
 Text05Space=3;
+
+// Zeile 5: Linker Rand:
+Text05LSpace=5;
 
 // Zeile 6: Text:
 Text06="FT-114-43 &";
@@ -125,11 +143,17 @@ Text06Size=6;
 // Zeile 6: Abstand zu Zeile 5:
 Text06Space=3;
 
+// Zeile 6: Linker Rand:
+Text06LSpace=5;
+
 // Zeile 7: Text:
 Text07="FT-114-77";
 
 // Zeile 7: Größe:
 Text07Size=6;
+
+// Zeile 7: Linker Rand:
+Text07LSpace=10;
 
 // Zeile 7: Abstand zu Zeile 6:
 Text07Space=3;
@@ -142,6 +166,9 @@ Text08Size=6;
 
 // Zeile 8: Abstand zu Zeile 7:
 Text08Space=3;
+
+// Zeile 8: Linker Rand:
+Text08LSpace=15;
 
 
 $fn=200;
@@ -267,7 +294,7 @@ module UGehause()
 	}
 }
 
-module UDeckel()
+module UDeckelA()
 {
 	//
 	union()
@@ -311,6 +338,77 @@ module UDeckel()
 		translate([(((BuAnBreite)/2)-DeRand)*-1, ((UDurchmesserAussen/2)+BuAnTiefe-DeRand)*-1, DeDicke+DeEiTiefe-(DeSnapDurch/2)])
 		rotate([0, 90, 0])
 		cylinder(d=DeSnapDurch, h=BuAnBreite-(2*DeRand), center=false);
+	}
+}
+
+module UDeckel()
+{
+	difference()
+	{
+		UDeckelA();
+		
+		// Text.
+		Font="Liberation Sans:style=Bold";
+		// 1. Zeile.
+		movY1=(UDurchmesserAussen/2)-Text01Size-Text01Space;
+		translate([(UDurchmesserAussen/2)-Text01LSpace, movY1, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text01, font=Font, size=Text01Size);
+		
+		// 2. Zeile.
+		//Font="Liberation Sans:style=Regular";
+		//Font="Liberation Sans:style=Bold";
+		//Font="Liberation Serif:style=Bold";
+		//Font="Nimbus Sans L:style=Regular Condensed";
+		//translate([(UDurchmesserAussen/4)+Text01Size, (UDurchmesserAussen/2)-Text02Space-Text01Size-Text02Size, 2])
+		movY2=movY1-Text02Size-Text02Space;
+		translate([(UDurchmesserAussen/2)-Text02LSpace, movY2, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text02, font=Font, size=Text02Size);
+		
+		// 3. Zeile.
+		movY3=movY2-Text03Size-Text03Space;
+		translate([(UDurchmesserAussen/2)-Text03LSpace, movY3, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text03, font=Font, size=Text03Size);
+		
+		// 4. Zeile.
+		movY4=movY3-Text04Size-Text04Space;
+		translate([(UDurchmesserAussen/2)-Text04LSpace, movY4, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text04, font=Font, size=Text04Size);
+		
+		// 5. Zeile.
+		movY5=movY4-Text05Size-Text05Space;
+		translate([(UDurchmesserAussen/2)-Text05LSpace, movY5, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text05, font=Font, size=Text05Size);
+		
+		// 6. Zeile.
+		movY6=movY5-Text06Size-Text06Space;
+		translate([(UDurchmesserAussen/2)-Text06LSpace, movY6, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text06, font=Font, size=Text06Size);
+		
+		// 7. Zeile.
+		movY7=movY6-Text07Size-Text07Space;
+		translate([(UDurchmesserAussen/2)-Text07LSpace, movY7, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text07, font=Font, size=Text07Size);
+		
+		// 8. Zeile.
+		movY8=movY7-Text08Size-Text08Space;
+		translate([(UDurchmesserAussen/2)-Text08LSpace, movY8, 2])
+		rotate([0, 180, 0])
+		linear_extrude(4)
+		text(text=Text08, font=Font, size=Text08Size);
 	}
 }
 
