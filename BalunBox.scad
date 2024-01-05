@@ -1,13 +1,13 @@
 
-/* [Balun-Type] */
+/* [Balun Type (Spannung/Strom)] */
 // Was für ein Balungehäuse:
 Type="Spannung"; // ["Spannung","Strom"]
 
-/* [Gehäuse-Teil] */
+/* [Gehäuse-Teil (Spannung/Strom)] */
 // Welches Teil soll generiert werden:
 Teil="Körper & Deckel"; // ["Körper & Deckel","Körper", "Deckel"]
 
-/* [Spannungs-Balun-Gehäuse] */
+/* [Balun Gehäuse (Spannung)] */
 // Ausendurchmesser:
 UDurchmesserAussen=100;
 
@@ -17,7 +17,7 @@ UHoehe=40;
 // Wandstärke.
 UDicke=3;
 
-/* [Strom-Balun-Gehäuse] */
+/* [Balun Gehäuse (Strom)] */
 // Breite:
 IBreite=50;
 
@@ -30,14 +30,14 @@ IHoehe=40;
 // Wandstärke.
 IDicke=3;
 
-/* [Buchsen-Ansatz] */
+/* [Buchsen Ansatz (Strom)] */
 // Tiefe:
 BuAnTiefe=30;
 
 // Breite:
 BuAnBreite=30;
 
-/* [Deckel] */
+/* [Deckel (Spannung/Strom)] */
 // Deckel Dicke ohne Eindringtiefe:
 DeDicke=3;
 
@@ -53,7 +53,7 @@ DeSnapDurch=1;
 // slider widget for number in range
 DeScaleXY=0.99; // [0.98:0.01:1.02]
 
-/* [Abgriffe] */
+/* [Abgriffe (Spannung)] */
 // Bohrung-Durchmesser:
 AbgBoDurch=5;
 
@@ -66,14 +66,14 @@ Deg=90;
 // Abstand in Grad:
 AbgDeltaDeg=15;
 
-/* [Anschlußflansch] */
+/* [Anschlußflansch (Spannung/Strom)] */
 // Typ des Anschluß Flansches, Norden:
 FlanschTypN="UG 58 TG"; // ["UG 58 TG","Hyperflex 5"]
 
 // Typ des Anschluß Flansches, Süden:
 FlanschTypS="UG 58 TG"; // ["UG 58 TG","Hyperflex 5"]
 
-/* [Deckel Beschriftung] */
+/* [Deckel Beschriftung (Spannung/Strom)] */
 // Zeile 1: Text:
 Text01="Strom-";
 
@@ -177,9 +177,11 @@ echo($fn);
 //echo($font);
 //font="Liberation Sans:style=Bold Italic";
 
-Version="R.01.000"
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
+
+Version="R.01.000";
 
 module UGehauseA()
 {
