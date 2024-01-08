@@ -17,6 +17,24 @@ UHoehe=40;
 // Wandstärke.
 UDicke=3;
 
+// Buchsenansatz Tiefe:
+BuAnTiefe=30;
+
+// Buchsenansatz Breite:
+BuAnBreite=30;
+
+// Abgriffe Bohrung-Durchmesser:
+AbgBoDurch=5;
+
+// Anzahl-Abgriffe:
+AbgAnz=4;
+
+// Abgriffe Start-Winkel:
+Deg=90;
+
+// Abgriffe Abstand in Grad:
+AbgDeltaDeg=15;
+
 /* [Balun Gehäuse (Strom)] */
 // Breite:
 IBreite=50;
@@ -29,13 +47,6 @@ IHoehe=40;
 
 // Wandstärke.
 IDicke=3;
-
-/* [Buchsen Ansatz (Strom)] */
-// Tiefe:
-BuAnTiefe=30;
-
-// Breite:
-BuAnBreite=30;
 
 /* [Deckel (Spannung/Strom)] */
 // Deckel Dicke ohne Eindringtiefe:
@@ -52,19 +63,6 @@ DeSnapDurch=1;
 
 // slider widget for number in range
 DeScaleXY=0.99; // [0.98:0.01:1.02]
-
-/* [Abgriffe (Spannung)] */
-// Bohrung-Durchmesser:
-AbgBoDurch=5;
-
-// Anzahl-Abgriffe:
-AbgAnz=4;
-
-// Start-Winkel:
-Deg=90;
-
-// Abstand in Grad:
-AbgDeltaDeg=15;
 
 /* [Anschlußflansch (Spannung/Strom)] */
 // Typ des Anschluß Flansches, Norden:
