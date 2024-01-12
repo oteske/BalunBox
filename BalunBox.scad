@@ -24,16 +24,16 @@ BuAnTiefe=30;
 BuAnBreite=30;
 
 // Abgriffe Bohrung-Durchmesser:
-AbgBoDurch=5;
+AbgBoDurch=9.5;
 
 // Anzahl-Abgriffe:
-AbgAnz=4;
+AbgAnz=5;
 
 // Abgriffe Start-Winkel:
-Deg=90;
+Deg=120;
 
 // Abgriffe Abstand in Grad:
-AbgDeltaDeg=15;
+AbgDeltaDeg=20;
 
 /* [Balun Gehäuse (Strom)] */
 // Breite:
@@ -168,6 +168,28 @@ Text08Space=3;
 // Zeile 8: Linker Rand:
 Text08LSpace=15;
 
+/* [Befestigung (Spannung/Strom)] */
+// Typ der Befestigung:
+MountType="Keine"; // ["Keine","Rund","Länglich"]
+
+// Breite der Befestigung:
+MountBreite=20;
+
+// Länge der Befestigung:
+MountLaenge=25;
+
+// Dicke der Befestigung:
+MountDicke=10;
+
+// Durchbruch Durchmesser/Länge:
+MountDurchbDurchmesser=6.5;
+
+// Durchbruch Breite:
+MountDurchbBreite=3;
+
+// Abstand des Durchbruchs zum Gehäuse:
+MountDurchbDist=10;
+
 
 $fn=200;
 echo($fn);
@@ -276,7 +298,8 @@ module UGehauseB()
 	}
 }
 
-module UGehause()
+//module UGehause()
+module UGehauseC()
 {
 	difference()
 	//union()
@@ -293,6 +316,82 @@ module UGehause()
 		if(FlanschTypS=="UG 58 TG")
 		{
 			translate([0, ((UDurchmesserAussen/2)+BuAnTiefe-UDicke-1)*-1, 0]) FlanschBohrung_UG58TG();
+		}
+	}
+}
+
+
+// Befestigung.
+//==============
+module UGehauseD()
+{
+	
+	
+	//
+	UGehauseC();
+	
+	union()
+	{
+		
+		
+		//
+		if(MountType=="Rund" || MountType=="Länglich")
+		{
+			// Befestigung Osten.
+			translate([(UDurchmesserAussen/2)-2, (MountBreite/2)*-1, 0])
+			cube([MountLaenge+2, MountBreite, MountDicke], center=false);
+			
+			// Befestigung Westen.
+			//translate([((UDurchmesserAussen/2)+2+MountLaenge)*-1, (MountBreite/2)*-1, 0])
+			translate([((MountLaenge+2)*-1)-(UDurchmesserAussen/2)+2, (MountBreite/2)*-1, 0])
+			cube([MountLaenge+2, MountBreite, MountDicke], center=false);
+		}
+	}
+}
+
+
+module Langloch()
+{
+	//
+	translate([0, 0, 0])
+	cube([MountDurchbBreite, MountDurchbDurchmesser-MountDurchbBreite, MountDicke+2], center=true);
+	translate([0, (MountDurchbDurchmesser/2)-(MountDurchbBreite/2), 0])
+	cylinder(d=MountDurchbBreite, h=MountDicke+2, center=true);
+	translate([0, ((MountDurchbDurchmesser/2)-(MountDurchbBreite/2))*-1, 0])
+	cylinder(d=MountDurchbBreite, h=MountDicke+2, center=true);
+}
+
+// Befestigung Durchbrüche.
+//==========================
+module UGehause()
+{
+	//
+	//UGehauseD();
+	
+	difference()
+	{
+		UGehauseD();
+		
+		if(MountType=="Rund")
+		{
+			// Durchbruch Osten.
+			translate([(UDurchmesserAussen/2)+(MountDurchbDurchmesser/2)+MountDurchbDist, 0, (MountDicke/2)])
+			cylinder(d=MountDurchbDurchmesser, h=MountDicke+4, center=true);
+			
+			// Durchbruch Westen.
+			translate([((UDurchmesserAussen/2)+(MountDurchbDurchmesser/2)+MountDurchbDist)*-1, 0, (MountDicke/2)])
+			cylinder(d=MountDurchbDurchmesser, h=MountDicke+4, center=true);
+		}
+		
+		if(MountType=="Länglich")
+		{
+			// Durchbruch Osten.
+			translate([(UDurchmesserAussen/2)+(MountDurchbBreite/2)+MountDurchbDist, 0, (MountDicke/2)])
+			Langloch();
+			
+			// Durchbruch Westen.
+			translate([((UDurchmesserAussen/2)+(MountDurchbBreite/2)+MountDurchbDist)*-1, 0, (MountDicke/2)])
+			Langloch();
 		}
 	}
 }
